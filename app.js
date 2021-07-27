@@ -1,5 +1,4 @@
 const config = require("./config.json");
-const token = require("./token.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
@@ -59,5 +58,28 @@ bot.on("message", async message => {
   if(commandfile) commandfile.run(bot,message,args);
 
 });
+
+
+bot.on("guildMemberAdd", async member => {
+    if (member.user.username.startsWith("【ＣＧ】")) {
+        try {await member.send("You have been banned from "+member.guild.name+" due to being a Chaos Gang member")} catch (err) {}
+        await member.ban({reason:"Chaos Gang Member"})
+    } 
+    if (member.user.bot) {
+        if (!member.user.flags.has(discord.UserFlags.FLAGS.VERIFIED_BOT)) {
+            await member.ban({reason:"Non verified bot."})
+            await member.guild.fetchAuditLogs({limit:1, type:"BOT_ADD"})
+            .then(async audit => {
+                first_log = audit.entries.first();
+                const {executor, target} = first_log;
+                try {
+                    await member.guild.members.cache.get(executor.id).ban({reason:"Added a unverified bot."})
+                } catch(err) {console.log(err)}
+
+            })
+
+        }
+    }
+})
 //Token need in token.json
-bot.login(token.token);
+bot.login(process.env.TOKEN);

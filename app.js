@@ -26,7 +26,7 @@ fs.readdir("./commands/", (err, files) => {
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online on ${bot.guilds.cache.size} servers!`);
 
-  bot.user.setActivity('over ${bot.guilds.cache.size} servers!', {type: "WATCHING"});
+  bot.user.setActivity('over unverified bots!!', {type: "WATCHING"});
 });
 
 //Command Manager

@@ -20,13 +20,13 @@ fs.readdir("./commands/", (err, files) => {
     bot.commands.set(props.help.name, props);
   });
 
-
+});
 
 //Playing Message
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online on ${bot.guilds.cache.size} servers!`);
 
-  bot.user.setActivity("$help", {type: "WATCHING"});
+  bot.user.setActivity("over ${bot.guilds.cache.size} servers!", {type: "WATCHING"});
 });
 
 //Command Manager

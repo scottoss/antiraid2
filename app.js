@@ -26,7 +26,7 @@ fs.readdir("./commands/", (err, files) => {
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online on ${bot.guilds.cache.size} servers!`);
 
-  bot.user.setActivity("Protect in ${bot.guilds.cache.size} servers!", {type: "PLAYING"});
+  bot.user.setActivity("$help", {type: "WATCHING"});
 });
 
 //Command Manager

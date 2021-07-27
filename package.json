@@ -5,7 +5,7 @@
   "description": "Discord.js antiraidbot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "author": "DerpysTown#1416",
   "license": "ISC",
